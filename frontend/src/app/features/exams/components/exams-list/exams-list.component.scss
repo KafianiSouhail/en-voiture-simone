@@ -1,0 +1,82 @@
+.exams-list {
+  width: 100%;
+  padding: 3% 10%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    .left-part {
+      font-weight: 700;
+      font-size: 26px;
+      .upcoming-exams {
+        margin-top: 1rem;
+        font-weight: 500;
+        font-size: 19px;
+      }
+    }
+
+    .right-part {
+      .btn {
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    .exam-card {
+      border-radius: 20px;
+    }
+    .data {
+      padding: 1rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 20%;
+      }
+
+      .status-wrapper {
+        border-radius: 999px;
+        padding: 0.3rem 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        max-width: 17%;
+
+        &.status-confirmed {
+          background-color: #d1f5e5;
+          color: #007e5b;
+        }
+
+        &.status-organize {
+          background-color: #ffece5;
+          color: #ff6200;
+        }
+
+        &.status-canceled {
+          background-color: #ffe4e4;
+          color: #c20000;
+        }
+
+        &.status-looking {
+          background-color: #eee;
+          color: #666;
+          padding-top: 0.6rem;
+          padding-bottom: 0.6rem;
+        }
+      }
+    }
+  }
+}

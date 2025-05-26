@@ -1,0 +1,68 @@
+<div class="exams-list">
+  <div class="header">
+    <div class="left-part">
+      <p>Mes examens</p>
+      <p class="upcoming-exams" *ngIf="exams$ | async as exams">
+        {{ exams.length }} examens a venir
+      </p>
+    </div>
+    <div class="right-part">
+      <button
+        class="btn"
+        mat-raised-button
+        color="warn"
+        (click)="navigateToAddExam()"
+      >
+        Organiser un examen
+      </button>
+    </div>
+  </div>
+  <div class="content" *ngIf="exams$ | async as exams">
+    <ng-container *ngFor="let exam of exams">
+      <mat-card class="exam-card">
+        <mat-card-content>
+          <div class="data">
+            <span
+              ><mat-icon>person</mat-icon>
+              <strong>{{ exam.firstname }}.{{ exam.lastname }}</strong></span
+            >
+            <span
+              ><mat-icon>location_on</mat-icon>
+              {{ exam.meeting_point ? exam.meeting_point : "En attente" }}</span
+            >
+            <span
+              ><mat-icon>event</mat-icon>
+              {{
+                exam.date ? (exam.date | date : "d MMMM") : "En attente"
+              }}</span
+            >
+            <span
+              ><mat-icon>access_time</mat-icon>
+              {{
+                exam.date ? (exam.date | date : "HH:mm") : "En attente"
+              }}</span
+            >
+            <span
+              class="status-wrapper"
+              [ngClass]="getStatusClassName(exam.status)"
+            >
+              <mat-icon *ngIf="exam.status === examStatus.CONFIRMED"
+                >check</mat-icon
+              >
+              <mat-icon *ngIf="exam.status === examStatus.CANCELED"
+                >close</mat-icon
+              >
+              <mat-icon *ngIf="exam.status === examStatus.TO_ORGANIZE"
+                >campaign</mat-icon
+              >
+              <mat-icon *ngIf="exam.status === examStatus.SEARCHING_PLACE"
+                >hourglass_empty</mat-icon
+              >
+              {{ exam.status }}
+            </span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
